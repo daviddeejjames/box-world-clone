@@ -25,16 +25,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt81l"]
-size = Vector2(14, 13)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 100
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(8, 6)
 sprite_frames = SubResource("SpriteFrames_wbgfi")
 autoplay = "default"
 frame_progress = 0.780589
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_mt81l")
