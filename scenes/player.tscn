@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxdc7tnkoo6jk"]
+
+[ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="1_7ajhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppw1f"]
+atlas = ExtResource("1_7ajhl")
+region = Rect2(0, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tons3"]
+atlas = ExtResource("1_7ajhl")
+region = Rect2(80, 240, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbgfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppw1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tons3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt81l"]
+size = Vector2(14, 13)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_wbgfi")
+autoplay = "default"
+frame_progress = 0.780589
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mt81l")
