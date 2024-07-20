@@ -1,6 +1,8 @@
-# box-world-clone
+# 📦 box-world-clone
 
-Clone of the Box World DOS game made in [Godot](https://godotengine.org/) as a game dev learning exercise
+A clone of the Box World DOS game.
+
+Clone made in [Godot](https://godotengine.org/) as a game dev learning exercise.
 
 Art assets by [Kenney](https://kenney.nl/assets/1-bit-platformer-pack)
 
