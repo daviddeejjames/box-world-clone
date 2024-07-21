@@ -11,15 +11,8 @@ var inputs = {
 	'ui_right': Vector2.RIGHT
 }
 
-# Read user input
-func _input(event):
-	for direction in inputs.keys():
-		if Input.is_action_pressed(direction):
-			move(direction)
-
-# Does the object in the next position have collision?
+# Does the object in the next position have collision?	
 func isNextPositionValid(nextPosition):
-	
 	ray.target_position = nextPosition
 	ray.force_raycast_update()
 	return !ray.is_colliding()
@@ -28,8 +21,6 @@ func move(direction):
 	var nextPosition = inputs[direction] * gridSize
 	if isNextPositionValid(nextPosition):
 		self.position += nextPosition 
-	else: 
-		var collider = ray.get_collider()
-		if collider.is_in_group('box'):
-			if collider.move(direction):
-				self.position += nextPosition
+		return true
+	else:
+		return false
