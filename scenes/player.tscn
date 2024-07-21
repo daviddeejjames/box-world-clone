@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxdc7tnkoo6jk"]
+[gd_scene load_steps=7 format=3 uid="uid://bxdc7tnkoo6jk"]
 
 [ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="1_7ajhl"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_hbn1i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppw1f"]
 atlas = ExtResource("1_7ajhl")
@@ -28,8 +29,8 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 100
-collision_mask = 2
+z_index = 50
+script = ExtResource("1_hbn1i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 6)
@@ -40,3 +41,7 @@ frame_progress = 0.780589
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_mt81l")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(8, 8)
+target_position = Vector2(2.08165e-12, 16)
