@@ -1,5 +1,6 @@
 extends Node2D
 
+const FILE_BEGIN = "res://scenes/levels/box_world_level"
 var game_end = false 
 
 func _process(_delta):
@@ -15,4 +16,8 @@ func _process(_delta):
 			game_end = true
 
 func _on_accept_dialog_confirmed():
-	get_tree().reload_current_scene()
+	var currentScene = get_tree().current_scene.scene_file_path
+	var nextLevel = currentScene.to_int() + 1
+	
+	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
+	get_tree().change_scene_to_file(nextLevelPath)
