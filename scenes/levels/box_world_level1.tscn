@@ -1282,4 +1282,23 @@ position = Vector2(64, -32)
 [node name="Goal4" parent="Goals" instance=ExtResource("5_s8ka2")]
 position = Vector2(80, 48)
 
+[node name="UI" type="Node" parent="."]
+
+[node name="Reset Button" type="Button" parent="UI"]
+offset_left = -32.0
+offset_top = 80.0
+offset_right = 22.0
+offset_bottom = 111.0
+text = "Reset"
+
+[node name="Undo Button" type="Button" parent="UI"]
+offset_left = -96.0
+offset_top = 80.0
+offset_right = -46.0
+offset_bottom = 111.0
+text = "Undo
+"
+
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
+[connection signal="pressed" from="UI/Reset Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Undo Button" to="." method="_on_undo_button_pressed"]

@@ -21,3 +21,17 @@ func _on_accept_dialog_confirmed():
 	
 	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
 	get_tree().change_scene_to_file(nextLevelPath)
+
+
+func _on_reset_button_pressed():
+	get_tree().reload_current_scene()
+
+func _on_undo_button_pressed():
+	var player = $Player
+	var boxes = $Boxes
+	for box in boxes.get_children():
+		if box.lastPosition.size() > 0:
+			box.position = box.lastPosition.pop_back()
+	if player.lastPlayerPos.size() > 0:
+		player.position = player.lastPlayerPos.pop_back()
+		
