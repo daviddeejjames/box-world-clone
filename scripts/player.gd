@@ -3,6 +3,7 @@ extends CharacterBody2D
 const gridSize = 16 
 
 @onready var ray = $RayCast2D
+var lastPlayerPos = []
 
 var inputs = {
 	'ui_up': Vector2.UP,
@@ -32,4 +33,6 @@ func move(direction):
 		var collider = ray.get_collider()
 		if collider.is_in_group('box'):
 			if collider.move(direction):
+				lastPlayerPos.push_back(self.position)
 				self.position += nextPosition
+				
