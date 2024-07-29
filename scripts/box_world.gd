@@ -29,9 +29,11 @@ func _on_reset_button_pressed():
 func _on_undo_button_pressed():
 	var player = $Player
 	var boxes = $Boxes
-	for box in boxes.get_children():
-		if box.lastPosition.size() > 0:
-			box.position = box.lastPosition.pop_back()
+	
 	if player.lastPlayerPos.size() > 0:
-		player.position = player.lastPlayerPos.pop_back()
-		
+		var undoDict = player.lastPlayerPos.pop_back()
+		print(undoDict) # prints state we are reverting to
+		var prevBoxPos = undoDict["BoxPos"]
+		var prevBoxIndex = undoDict["BoxIndex"]
+		player.position = undoDict["PlayerPos"]
+		boxes.get_child(prevBoxIndex).position = prevBoxPos
