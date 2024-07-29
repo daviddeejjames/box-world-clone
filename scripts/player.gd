@@ -33,6 +33,10 @@ func move(direction):
 		var collider = ray.get_collider()
 		if collider.is_in_group('box'):
 			if collider.move(direction):
-				lastPlayerPos.push_back(self.position)
+				var undoDict = { 
+					"PlayerPos" = self.position,
+					"BoxPos" = (self.position + nextPosition),
+					"BoxIndex" = collider.get_index()
+				}
+				lastPlayerPos.push_back(undoDict)
 				self.position += nextPosition
-				

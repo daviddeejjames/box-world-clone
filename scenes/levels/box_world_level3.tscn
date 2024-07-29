@@ -1287,15 +1287,17 @@ position = Vector2(32, 32)
 [node name="Reset Button" type="Button" parent="UI"]
 offset_left = -32.0
 offset_top = 80.0
-offset_right = 22.0
-offset_bottom = 111.0
+offset_right = 3.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 14
 text = "Reset"
 
 [node name="Undo Button" type="Button" parent="UI"]
 offset_left = -96.0
 offset_top = 80.0
-offset_right = -46.0
-offset_bottom = 111.0
+offset_right = -48.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 14
 text = "Undo
 "
 

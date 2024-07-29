@@ -1250,7 +1250,8 @@ zoom = Vector2(3, 3)
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 title = "Pusholo"
 initial_position = 5
-size = Vector2i(122, 100)
+size = Vector2i(256, 100)
+ok_button_text = "Continue"
 dialog_text = "Level cleared!"
 dialog_close_on_escape = false
 
@@ -1300,5 +1301,5 @@ text = "Undo
 "
 
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
-[connection signal="pressed" from="UI/Reset Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Reset Button" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="UI/Undo Button" to="." method="_on_undo_button_pressed"]

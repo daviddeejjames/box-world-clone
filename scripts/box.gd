@@ -3,7 +3,6 @@ extends CharacterBody2D
 const gridSize = 16 
 
 @onready var ray = $RayCast2D
-var lastPosition = []
 
 var inputs = {
 	'ui_up': Vector2.UP,
@@ -21,7 +20,6 @@ func isNextPositionValid(nextPosition):
 func move(direction):
 	var nextPosition = inputs[direction] * gridSize
 	if isNextPositionValid(nextPosition):
-		lastPosition.push_back(self.position)
 		self.position += nextPosition 
 		return true
 	else:
