@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnuowngtlfmj3"]
+[gd_scene load_steps=8 format=3 uid="uid://cmishcftd7tk8"]
 
-[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_iytfg"]
-[ext_resource type="Texture2D" uid="uid://c3x0cbe37epll" path="res://sprites/monochrome_tilemap_packed.png" id="2_0p665"]
-[ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_dds34"]
-[ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_3w77y"]
-[ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_gs3a2"]
+[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_4o3a8"]
+[ext_resource type="Texture2D" uid="uid://c3x0cbe37epll" path="res://sprites/monochrome_tilemap_packed.png" id="2_hu730"]
+[ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_5mrg7"]
+[ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_j8v0c"]
+[ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_xf0v1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e0yp"]
-texture = ExtResource("2_0p665")
+texture = ExtResource("2_hu730")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1226,8 +1226,8 @@ texture = ExtResource("2_0p665")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6e0yp")
 
-[node name="BoxWorldLevel2" type="Node2D"]
-script = ExtResource("1_iytfg")
+[node name="BoxWorldLevel8" type="Node2D"]
+script = ExtResource("1_4o3a8")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_45tgg")
@@ -1237,10 +1237,10 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 131072, 0, 0, 65536, 0, 0
 layer_1/name = "Rain"
 layer_1/tile_data = PackedInt32Array(-65527, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, -131063, 0, 0, 393225, 0, 0, -131062, 0, 0, -65526, 0, 0, 10, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262154, 0, 0, 327690, 0, 0, 393226, 0, 0)
 layer_2/name = "Walls"
-layer_2/tile_data = PackedInt32Array(131075, 655360, 4, 131074, 655360, 4, 196610, 655360, 4, 262146, 655360, 4, 327682, 655360, 4, 327683, 655360, 4, 327684, 655360, 4, 327685, 655360, 4, 327686, 655360, 4, 262150, 655360, 4, 196614, 655360, 4, 262151, 655360, 4, 262152, 655360, 4, 262153, 655360, 4, 196617, 655360, 4, 131081, 655360, 4, 65545, 655360, 4, 9, 655360, 4, -65527, 655360, 4, -65528, 655360, 4, -65529, 655360, 4, 7, 655360, 4, 65543, 655360, 4, 65542, 655360, 4, 65541, 655360, 4, 5, 655360, 4, -65531, 655360, 4, -131067, 655360, 4, -196603, 655360, 4, 65539, 655360, 4, 65538, 655360, 4, 65537, 655360, 4, 1, 655360, 4, -65535, 655360, 4, -131071, 655360, 4, -196607, 655360, 4, -196606, 655360, 4, -196605, 655360, 4, -196604, 655360, 4)
+layer_2/tile_data = PackedInt32Array(-65531, 655360, 4, -65530, 655360, 4, -196604, 655360, 4, -196603, 655360, 4, -196602, 655360, 4, -196601, 655360, 4, -65528, 655360, 4, -65527, 655360, 4, -131064, 655360, 4, -196600, 655360, 4, 9, 655360, 4, 65545, 655360, 4, 65544, 655360, 4, 131080, 655360, 4, 196616, 655360, 4, 196615, 655360, 4, 196614, 655360, 4, 196613, 655360, 4, 131077, 655360, 4, 131076, 655360, 4, 131075, 655360, 4, 131074, 655360, 4, 131073, 655360, 4, -131069, 655360, 4, -196605, 655360, 4, -131070, 655360, 4, -131071, 655360, 4, -65535, 655360, 4, -65536, 655360, 4, 0, 655360, 4, 65536, 655360, 4, 131072, 655360, 4)
 
-[node name="Player" parent="." instance=ExtResource("3_dds34")]
-position = Vector2(32, -32)
+[node name="Player" parent="." instance=ExtResource("3_5mrg7")]
+position = Vector2(128, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(-113, -92)
@@ -1256,40 +1256,54 @@ dialog_close_on_escape = false
 
 [node name="Boxes" type="Node" parent="."]
 
-[node name="Box" parent="Boxes" instance=ExtResource("4_3w77y")]
-position = Vector2(48, -16)
-
-[node name="Box2" parent="Boxes" instance=ExtResource("4_3w77y")]
+[node name="Box" parent="Boxes" instance=ExtResource("4_j8v0c")]
 position = Vector2(64, -16)
 
-[node name="Box3" parent="Boxes" instance=ExtResource("4_3w77y")]
+[node name="Box2" parent="Boxes" instance=ExtResource("4_j8v0c")]
 position = Vector2(48, 0)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("4_j8v0c")]
+position = Vector2(64, 16)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("4_j8v0c")]
+position = Vector2(96, 16)
+
+[node name="Box5" parent="Boxes" instance=ExtResource("4_j8v0c")]
+position = Vector2(80, 0)
 
 [node name="Goals" type="Node" parent="."]
 
-[node name="Goal" parent="Goals" instance=ExtResource("5_gs3a2")]
-position = Vector2(128, 0)
+[node name="Goal" parent="Goals" instance=ExtResource("5_xf0v1")]
+position = Vector2(32, -16)
 
-[node name="Goal2" parent="Goals" instance=ExtResource("5_gs3a2")]
-position = Vector2(128, 16)
+[node name="Goal2" parent="Goals" instance=ExtResource("5_xf0v1")]
+position = Vector2(16, 16)
 
-[node name="Goal3" parent="Goals" instance=ExtResource("5_gs3a2")]
-position = Vector2(128, 32)
+[node name="Goal3" parent="Goals" instance=ExtResource("5_xf0v1")]
+position = Vector2(32, 16)
+
+[node name="Goal4" parent="Goals" instance=ExtResource("5_xf0v1")]
+position = Vector2(32, 0)
+
+[node name="Goal5" parent="Goals" instance=ExtResource("5_xf0v1")]
+position = Vector2(16, 0)
 
 [node name="UI" type="Node" parent="."]
 
 [node name="Reset Button" type="Button" parent="UI"]
 offset_left = -32.0
 offset_top = 80.0
-offset_right = 22.0
-offset_bottom = 111.0
+offset_right = 3.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 14
 text = "Reset"
 
 [node name="Undo Button" type="Button" parent="UI"]
 offset_left = -96.0
 offset_top = 80.0
-offset_right = -46.0
-offset_bottom = 111.0
+offset_right = -48.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 14
 text = "Undo
 "
 

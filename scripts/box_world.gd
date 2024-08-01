@@ -3,6 +3,12 @@ extends Node2D
 const FILE_BEGIN = "res://scenes/levels/box_world_level"
 var game_end = false 
 
+func _input(event):
+	if Input.is_action_pressed('ui_undo'):
+		_on_undo_button_pressed()
+	elif Input.is_action_pressed('Reset'):
+		_on_reset_button_pressed()
+
 func _process(_delta):
 	if game_end == false: 
 		var goals = $Goals.get_child_count()
