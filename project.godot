@@ -18,9 +18,17 @@ boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://letters-dark.png"
 config/icon="res://logo.png"
 
+[autoload]
+
+SceneTransition="*res://scenes/scene_transition.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="res://fonts/Cave-Story.ttf"
 
 [input]
 

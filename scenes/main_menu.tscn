@@ -26,26 +26,30 @@ grow_vertical = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 4.0
 theme_override_constants/separation = 10
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Play
 "
+flat = true
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Options
 "
+flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Quit"
+flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
