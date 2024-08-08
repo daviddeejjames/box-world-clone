@@ -26,6 +26,8 @@ func _on_accept_dialog_confirmed():
 	var nextLevel = currentScene.to_int() + 1
 	
 	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
+	SceneTransition.transition()
+	await SceneTransition.on_transistion_finished
 	get_tree().change_scene_to_file(nextLevelPath)
 
 
