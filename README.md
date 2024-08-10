@@ -1,5 +1,7 @@
 # 📦 Pusholo (a box-world-clone)
 
+![Pusholo Title Screen](./docs/screenshots/title-screen.png)
+
 **Pusholo** - A mini clone of the Box World DOS game. Includes the first 10 levels.
 
 Made using [Godot](https://godotengine.org/) as a game development learning exercise.
