@@ -1,8 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb62crcbxcc6n"]
+[gd_scene load_steps=11 format=3 uid="uid://bb62crcbxcc6n"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_1p8k3"]
-[ext_resource type="Texture2D" uid="uid://dkkioguq5tb58" path="res://title.png" id="2_jpd5x"]
+[ext_resource type="Texture2D" uid="uid://dkkioguq5tb58" path="res://textures/title.png" id="2_oo7px"]
 [ext_resource type="PackedScene" uid="uid://cpr8j77ye3clp" path="res://scenes/unplayer.tscn" id="3_vgy1h"]
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="4_st2gh"]
+[ext_resource type="Texture2D" uid="uid://bjp7g4untvp5x" path="res://textures/pattern_14.png" id="5_tva38"]
+[ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="6_eix0k"]
+
+[sub_resource type="Animation" id="Animation_kmq0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Unplayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(496, 272)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Box:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-192, 272)]
+}
+
+[sub_resource type="Animation" id="Animation_ns51f"]
+resource_name = "move_player"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Unplayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, 280), Vector2(1650, 280)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Box:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-192, 280), Vector2(1758, 280)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lydde"]
+_data = {
+"RESET": SubResource("Animation_kmq0l"),
+"move_player": SubResource("Animation_ns51f")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2g7t"]
+shader = ExtResource("4_st2gh")
+shader_parameter/scroll_speed = 0.03
+shader_parameter/angle_degrees = 33.0
+shader_parameter/repeat_x = 10.0
+shader_parameter/repeat_y = 10.0
+shader_parameter/tint = Color(1, 1, 1, 0.239216)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,6 +87,7 @@ grow_vertical = 2
 script = ExtResource("1_1p8k3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 100
 clip_contents = true
 layout_mode = 1
 anchors_preset = 12
@@ -59,14 +133,35 @@ flat = true
 z_index = 200
 position = Vector2(576, 224)
 scale = Vector2(0.343034, 0.356884)
-texture = ExtResource("2_jpd5x")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+texture = ExtResource("2_oo7px")
 
 [node name="Unplayer" parent="Background" instance=ExtResource("3_vgy1h")]
 position = Vector2(496, 272)
-scale = Vector2(9, 9)
-script = null
+scale = Vector2(7, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lydde")
+}
+autoplay = "move_player"
+
+[node name="ParalaxBG" type="TextureRect" parent="Background"]
+show_behind_parent = true
+z_index = 10
+material = SubResource("ShaderMaterial_c2g7t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_tva38")
+stretch_mode = 6
+
+[node name="Box" parent="Background" instance=ExtResource("6_eix0k")]
+position = Vector2(-192, 272)
+scale = Vector2(7, 7)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

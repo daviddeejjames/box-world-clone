@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c118fdq8a6pym"]
+[gd_scene load_steps=10 format=3 uid="uid://c118fdq8a6pym"]
 
 [ext_resource type="Script" path="res://scripts/box_world.gd" id="1_npbc6"]
 [ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_elo14"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_sutdc"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_e32yn"]
 [ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_pinxd"]
+[ext_resource type="PackedScene" uid="uid://d10sns3jv47ul" path="res://scenes/win_timer.tscn" id="6_p4u0r"]
+[ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="7_dbe55"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e0yp"]
 texture = ExtResource("2_elo14")
@@ -1247,13 +1249,6 @@ offset = Vector2(-113, -92)
 anchor_mode = 0
 zoom = Vector2(3, 3)
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-title = "Pusholo"
-initial_position = 5
-size = Vector2i(122, 100)
-dialog_text = "Level cleared!"
-dialog_close_on_escape = false
-
 [node name="Boxes" type="Node" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource("4_e32yn")]
@@ -1288,25 +1283,9 @@ position = Vector2(80, 48)
 [node name="Goal5" parent="Goals" instance=ExtResource("5_pinxd")]
 position = Vector2(48, 48)
 
-[node name="UI" type="Node" parent="."]
+[node name="UI" parent="." instance=ExtResource("7_dbe55")]
 
-[node name="Reset Button" type="Button" parent="UI"]
-offset_left = -32.0
-offset_top = 80.0
-offset_right = 3.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 14
-text = "Reset"
+[node name="WinTimer" parent="." instance=ExtResource("6_p4u0r")]
+wait_time = 2.0
 
-[node name="Undo Button" type="Button" parent="UI"]
-offset_left = -96.0
-offset_top = 80.0
-offset_right = -48.0
-offset_bottom = 108.0
-theme_override_font_sizes/font_size = 14
-text = "Undo
-"
-
-[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
-[connection signal="pressed" from="UI/Reset Button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="UI/Undo Button" to="." method="_on_undo_button_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

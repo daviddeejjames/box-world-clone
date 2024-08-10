@@ -4,10 +4,11 @@ const FILE_BEGIN = "res://scenes/levels/box_world_level"
 var game_end = false 
 
 func _input(event):
-	if Input.is_action_pressed('ui_undo'):
-		_on_undo_button_pressed()
-	elif Input.is_action_pressed('Reset'):
-		_on_reset_button_pressed()
+	if !game_end:
+		if Input.is_action_pressed('ui_undo'):
+			_on_undo_button_pressed()
+		elif Input.is_action_pressed('Reset'):
+			_on_reset_button_pressed()
 
 func _process(_delta):
 	if game_end == false: 
@@ -18,18 +19,9 @@ func _process(_delta):
 				
 		if goals == 0:
 			print("YOU WON!")
-			$AcceptDialog.popup()
+			$WinTimer.start()
+			$UI/CompleteContainer.transition()
 			game_end = true
-
-func _on_accept_dialog_confirmed():
-	var currentScene = get_tree().current_scene.scene_file_path
-	var nextLevel = currentScene.to_int() + 1
-	
-	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
-	SceneTransition.transition()
-	await SceneTransition.on_transistion_finished
-	get_tree().change_scene_to_file(nextLevelPath)
-
 
 func _on_reset_button_pressed():
 	get_tree().reload_current_scene()
@@ -45,3 +37,15 @@ func _on_undo_button_pressed():
 		var prevBoxIndex = undoDict["BoxIndex"]
 		player.position = undoDict["PlayerPos"]
 		boxes.get_child(prevBoxIndex).position = prevBoxPos
+
+
+func _on_win_timer_timeout():
+	var currentScene = get_tree().current_scene.scene_file_path
+	var nextLevel = currentScene.to_int() + 1
+	
+	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
+	$WinTimer.wait_time = 2
+	SceneTransition.transition()
+	await SceneTransition.on_transistion_finished
+	get_tree().change_scene_to_file(nextLevelPath)
+	

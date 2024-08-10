@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8bee4w1vd5ck"]
+[gd_scene load_steps=6 format=3 uid="uid://b8bee4w1vd5ck"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_6ouec"]
+[ext_resource type="Theme" uid="uid://cyt67yifc08fx" path="res://pusholo_theme.tres" id="2_e0n63"]
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_xpbft"]
+[ext_resource type="Texture2D" uid="uid://bjp7g4untvp5x" path="res://textures/pattern_14.png" id="3_evl5l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n63y6"]
+shader = ExtResource("2_xpbft")
+shader_parameter/scroll_speed = 0.03
+shader_parameter/angle_degrees = 33.0
+shader_parameter/repeat_x = 10.0
+shader_parameter/repeat_y = 10.0
+shader_parameter/tint = Color(1, 1, 1, 0.239216)
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_6ouec")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 100
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -38,21 +50,39 @@ theme_override_constants/separation = 20
 
 [node name="Music" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("2_e0n63")
+theme_override_font_sizes/font_size = 40
 button_pressed = true
 text = "Music"
 
 [node name="SFX" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("2_e0n63")
+theme_override_font_sizes/font_size = 40
 button_pressed = true
 text = "SFX"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("2_e0n63")
+theme_override_font_sizes/font_size = 40
 button_mask = 3
 text = "Back"
+
+[node name="Background" type="Node" parent="."]
+
+[node name="ParalaxBG" type="TextureRect" parent="Background"]
+show_behind_parent = true
+z_index = 10
+material = SubResource("ShaderMaterial_n63y6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_evl5l")
+stretch_mode = 6
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SFX" to="." method="_on_sfx_pressed"]

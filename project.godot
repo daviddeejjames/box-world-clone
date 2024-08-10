@@ -26,8 +26,22 @@ SceneTransition="*res://scenes/scene_transition.tscn"
 
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://docs/": "gray",
+"res://fonts/": "gray",
+"res://scenes/": "pink",
+"res://scenes/levels/": "purple",
+"res://scripts/": "orange",
+"res://shaders/": "green",
+"res://sprites/": "yellow",
+"res://textures/": "blue"
+}
+
 [gui]
 
+theme/custom="res://pusholo_theme.tres"
 theme/custom_font="res://fonts/Cave-Story.ttf"
 
 [input]

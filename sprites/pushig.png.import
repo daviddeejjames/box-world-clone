@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkkioguq5tb58"
-path="res://.godot/imported/title.png-50ae1153955eed1e1a910d67a0682202.ctex"
+uid="uid://bom882rb1m23q"
+path="res://.godot/imported/pushig.png-7b2e519776a2fc2bb965ad0199d5a0d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://title.png"
-dest_files=["res://.godot/imported/title.png-50ae1153955eed1e1a910d67a0682202.ctex"]
+source_file="res://sprites/pushig.png"
+dest_files=["res://.godot/imported/pushig.png-7b2e519776a2fc2bb965ad0199d5a0d9.ctex"]
 
 [params]
 

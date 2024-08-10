@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpr8j77ye3clp"]
+[gd_scene load_steps=9 format=3 uid="uid://cpr8j77ye3clp"]
 
+[ext_resource type="Texture2D" uid="uid://bom882rb1m23q" path="res://sprites/pushig.png" id="2_82ae1"]
 [ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="2_o61tq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppw1f"]
@@ -9,6 +10,14 @@ region = Rect2(0, 240, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tons3"]
 atlas = ExtResource("2_o61tq")
 region = Rect2(80, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckq7b"]
+atlas = ExtResource("2_82ae1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi4ey"]
+atlas = ExtResource("2_82ae1")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbgfi"]
 animations = [{
@@ -22,6 +31,17 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckq7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi4ey")
+}],
+"loop": true,
+"name": &"pushing",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt81l"]
@@ -33,8 +53,10 @@ z_index = 50
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 6)
 sprite_frames = SubResource("SpriteFrames_wbgfi")
-autoplay = "default"
-frame_progress = 0.780589
+animation = &"pushing"
+autoplay = "pushing"
+frame_progress = 0.147384
+offset = Vector2(2.08165e-12, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c317wd8fmloxb"]
+[gd_scene load_steps=10 format=3 uid="uid://c317wd8fmloxb"]
 
 [ext_resource type="Script" path="res://scripts/box_world.gd" id="1_ko8bk"]
 [ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="2_p2fpx"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_17evx"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_f87i8"]
 [ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_s8ka2"]
+[ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="6_frtd2"]
+[ext_resource type="PackedScene" uid="uid://d10sns3jv47ul" path="res://scenes/win_timer.tscn" id="7_83ws8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e0yp"]
 texture = ExtResource("2_p2fpx")
@@ -1226,13 +1228,11 @@ texture = ExtResource("2_p2fpx")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6e0yp")
 
-[sub_resource type="Shortcut" id="Shortcut_3mge1"]
-events = [null]
-
 [node name="BoxWorldLevel1" type="Node2D"]
 script = ExtResource("1_ko8bk")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = 10
 tile_set = SubResource("TileSet_45tgg")
 format = 2
 layer_0/name = "Background"
@@ -1250,26 +1250,22 @@ offset = Vector2(-113, -92)
 anchor_mode = 0
 zoom = Vector2(3, 3)
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-title = "Pusholo"
-initial_position = 5
-size = Vector2i(256, 100)
-ok_button_text = "Continue"
-dialog_text = "Level cleared!"
-dialog_close_on_escape = false
-
 [node name="Boxes" type="Node" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource("4_f87i8")]
+z_index = 10
 position = Vector2(64, 0)
 
 [node name="Box2" parent="Boxes" instance=ExtResource("4_f87i8")]
+z_index = 10
 position = Vector2(64, 16)
 
 [node name="Box3" parent="Boxes" instance=ExtResource("4_f87i8")]
+z_index = 10
 position = Vector2(80, 32)
 
 [node name="Box4" parent="Boxes" instance=ExtResource("4_f87i8")]
+z_index = 10
 position = Vector2(96, 0)
 
 [node name="Goals" type="Node" parent="."]
@@ -1286,24 +1282,9 @@ position = Vector2(64, -32)
 [node name="Goal4" parent="Goals" instance=ExtResource("5_s8ka2")]
 position = Vector2(80, 48)
 
-[node name="UI" type="Node" parent="."]
+[node name="UI" parent="." instance=ExtResource("6_frtd2")]
 
-[node name="Reset Button" type="Button" parent="UI"]
-offset_left = -32.0
-offset_top = 80.0
-offset_right = 22.0
-offset_bottom = 111.0
-shortcut = SubResource("Shortcut_3mge1")
-text = "Reset"
+[node name="WinTimer" parent="." instance=ExtResource("7_83ws8")]
+wait_time = 2.0
 
-[node name="Undo Button" type="Button" parent="UI"]
-offset_left = -96.0
-offset_top = 80.0
-offset_right = -46.0
-offset_bottom = 111.0
-text = "Undo
-"
-
-[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
-[connection signal="pressed" from="UI/Reset Button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="UI/Undo Button" to="." method="_on_undo_button_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwttg26wtubfi"]
+[gd_scene load_steps=9 format=3 uid="uid://bwttg26wtubfi"]
 
 [ext_resource type="Script" path="res://scripts/box_world.gd" id="1_6of3n"]
 [ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_6e4j6"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_mis7j"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_koo22"]
 [ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_6j8sv"]
+[ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="6_ixdqj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e0yp"]
 texture = ExtResource("2_6e4j6")
@@ -1247,13 +1248,6 @@ offset = Vector2(-113, -92)
 anchor_mode = 0
 zoom = Vector2(3, 3)
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-title = "Pusholo"
-initial_position = 5
-size = Vector2i(122, 100)
-dialog_text = "Level cleared!"
-dialog_close_on_escape = false
-
 [node name="Boxes" type="Node" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource("4_koo22")]
@@ -1288,25 +1282,9 @@ position = Vector2(112, -16)
 [node name="Goal5" parent="Goals" instance=ExtResource("5_6j8sv")]
 position = Vector2(16, 16)
 
-[node name="UI" type="Node" parent="."]
+[node name="UI" parent="." instance=ExtResource("6_ixdqj")]
 
-[node name="Reset Button" type="Button" parent="UI"]
-offset_left = -32.0
-offset_top = 80.0
-offset_right = 3.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 14
-text = "Reset"
+[node name="WinTimer" type="Timer" parent="."]
+wait_time = 2.0
 
-[node name="Undo Button" type="Button" parent="UI"]
-offset_left = -96.0
-offset_top = 80.0
-offset_right = -48.0
-offset_bottom = 108.0
-theme_override_font_sizes/font_size = 14
-text = "Undo
-"
-
-[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
-[connection signal="pressed" from="UI/Reset Button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="UI/Undo Button" to="." method="_on_undo_button_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
