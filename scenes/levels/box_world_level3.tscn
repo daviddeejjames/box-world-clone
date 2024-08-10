@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cm2hbcflerh50"]
 
 [ext_resource type="Script" path="res://scripts/box_world.gd" id="1_4e3uv"]
-[ext_resource type="Texture2D" uid="uid://c3x0cbe37epll" path="res://sprites/monochrome_tilemap_packed.png" id="2_wlwaf"]
+[ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_wlwaf"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_va4ne"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_d0bo8"]
 [ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_07s3t"]
