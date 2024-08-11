@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwttg26wtubfi"]
+[gd_scene load_steps=8 format=3 uid="uid://bwttg26wtubfi"]
 
 [ext_resource type="Script" path="res://scripts/box_world.gd" id="1_6of3n"]
 [ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_6e4j6"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_mis7j"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_koo22"]
 [ext_resource type="PackedScene" uid="uid://cmnnlyqjh65o" path="res://scenes/goal.tscn" id="5_6j8sv"]
-[ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="6_ixdqj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e0yp"]
 texture = ExtResource("2_6e4j6")
@@ -1281,10 +1280,3 @@ position = Vector2(112, -16)
 
 [node name="Goal5" parent="Goals" instance=ExtResource("5_6j8sv")]
 position = Vector2(16, 16)
-
-[node name="UI" parent="." instance=ExtResource("6_ixdqj")]
-
-[node name="WinTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

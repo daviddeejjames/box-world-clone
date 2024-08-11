@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cijvc7njf2rtm"]
+
+[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_dr252"]
+[ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="11_34u5o"]
+
+[sub_resource type="Shortcut" id="Shortcut_qjsep"]
+events = [null]
+
+[node name="BoxWorld" type="Node2D"]
+script = ExtResource("1_dr252")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Buttons"]
+z_index = 10
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 140.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Undo Button" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Ctrl+Z"
+theme_override_font_sizes/font_size = 50
+text = "Undo"
+flat = true
+alignment = 0
+
+[node name="Reset Button" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_qjsep")
+text = "Reset"
+flat = true
+alignment = 0
+
+[node name="UI" parent="." instance=ExtResource("11_34u5o")]
+
+[connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Undo Button" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]

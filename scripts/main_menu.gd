@@ -3,7 +3,7 @@ extends Control
 func _on_play_pressed():
 	SceneTransition.transition()
 	await SceneTransition.on_transistion_finished
-	get_tree().change_scene_to_file("res://scenes/levels/box_world_level1.tscn")
+	get_tree().change_scene_to_file("res://scenes/game_manager.tscn")
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/options_menu.tscn")

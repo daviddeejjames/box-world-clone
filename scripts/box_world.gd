@@ -2,6 +2,14 @@ extends Node2D
 
 const FILE_BEGIN = "res://scenes/levels/box_world_level"
 var game_end = false 
+const firstLevelPath = FILE_BEGIN + "1.tscn"
+var first_screen_scene:PackedScene = preload(firstLevelPath)
+var levelCounter = 1
+
+func _ready():
+	print(firstLevelPath)
+	var firstLevel = first_screen_scene.instantiate()
+	get_tree().root.add_child(firstLevel)
 
 func _input(event):
 	if !game_end:
@@ -11,7 +19,7 @@ func _input(event):
 			_on_reset_button_pressed()
 
 func _process(_delta):
-	if game_end == false: 
+	if game_end == false && $Goals: 
 		var goals = $Goals.get_child_count()
 		for g in $Goals.get_children():
 			if g.occupied:
@@ -19,7 +27,7 @@ func _process(_delta):
 				
 		if goals == 0:
 			print("YOU WON!")
-			$WinTimer.start()
+			$Timer.start()
 			$UI/CompleteContainer.transition()
 			game_end = true
 
@@ -40,12 +48,13 @@ func _on_undo_button_pressed():
 
 
 func _on_win_timer_timeout():
-	var currentScene = get_tree().current_scene.scene_file_path
-	var nextLevel = currentScene.to_int() + 1
-	
-	var nextLevelPath = FILE_BEGIN + str(nextLevel) + ".tscn"
-	$WinTimer.wait_time = 2
+	$Timer.wait_time = 2
 	SceneTransition.transition()
 	await SceneTransition.on_transistion_finished
-	get_tree().change_scene_to_file(nextLevelPath)
+	var currentLevelPath = FILE_BEGIN + str(levelCounter) + ".tscn"
+	levelCounter = levelCounter + 1
+	var nextLevelPath = FILE_BEGIN + str(levelCounter) + ".tscn"
+	get_tree().root.remove_child(get_node(currentLevelPath))
+	get_tree().root.add_child(get_node(nextLevelPath))
+	game_end = false
 	
