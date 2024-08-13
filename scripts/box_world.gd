@@ -1,11 +1,19 @@
 extends Node2D
 
-const FILE_BEGIN = "res://scenes/levels/box_world_level"
-var game_end = false 
-const firstLevelPath = FILE_BEGIN + "1.tscn"
+# Scene management
+const FILE_BEGIN := "res://scenes/levels/box_world_level"
+const firstLevelPath := FILE_BEGIN + "1.tscn"
 var first_screen_scene:PackedScene = preload(firstLevelPath)
-var levelCounter = 1
 
+# Gameplay variables
+@onready var timer := $Timer
+@onready var completeScreen := $UI/CompleteContainer
+var levelCounter := 1
+var game_end := false 
+
+# TODO: Save current scene as global
+# TODO: Check that scene is of type level
+# TODO: If type level, find relevant children scenes for below methods
 func _ready():
 	print(firstLevelPath)
 	var firstLevel = first_screen_scene.instantiate()
@@ -27,8 +35,8 @@ func _process(_delta):
 				
 		if goals == 0:
 			print("YOU WON!")
-			$Timer.start()
-			$UI/CompleteContainer.transition()
+			timer.start()
+			completeScreen.transition()
 			game_end = true
 
 func _on_reset_button_pressed():
@@ -46,9 +54,8 @@ func _on_undo_button_pressed():
 		player.position = undoDict["PlayerPos"]
 		boxes.get_child(prevBoxIndex).position = prevBoxPos
 
-
 func _on_win_timer_timeout():
-	$Timer.wait_time = 2
+	timer.wait_time = 2
 	SceneTransition.transition()
 	await SceneTransition.on_transistion_finished
 	var currentLevelPath = FILE_BEGIN + str(levelCounter) + ".tscn"

@@ -131,7 +131,7 @@ flat = true
 
 [node name="Title" type="Sprite2D" parent="Background"]
 z_index = 200
-position = Vector2(576, 224)
+position = Vector2(576, 205)
 scale = Vector2(0.343034, 0.356884)
 texture = ExtResource("2_oo7px")
 
