@@ -12,7 +12,7 @@ Original Box World Description:
 > BoxWorld is a puzzle classic game among Sokoban programs, where the player has to place boxes over special places in order to gain energy to teleport to the next level.
 
 ### Original
-![Original Game Screenshot](./docs/screenshots/original.png)
+![Original Box World Screenshot](./docs/screenshots/original.png)
 
 ### My Clone
-![Pusholo Screenshot](./docs/screenshots/my_clone.png)
+![Pusholo Screenshot](./docs/screenshots/pusholo-in-game.png)
