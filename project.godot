@@ -21,6 +21,7 @@ config/icon="res://logo.png"
 [autoload]
 
 SceneTransition="*res://scenes/scene_transition.tscn"
+LevelManager="*res://scripts/level_manager.gd"
 
 [display]
 

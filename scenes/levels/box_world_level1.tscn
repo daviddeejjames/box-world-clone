@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://c317wd8fmloxb"]
+[gd_scene load_steps=7 format=3 uid="uid://c317wd8fmloxb"]
 
-[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_ko8bk"]
 [ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="2_p2fpx"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_17evx"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_f87i8"]
@@ -427,7 +426,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6e0yp")
 
 [node name="BoxWorldLevel1" type="Node2D"]
-script = ExtResource("1_ko8bk")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 10
@@ -441,6 +439,7 @@ layer_2/name = "Walls"
 layer_2/tile_data = PackedInt32Array(65537, 655360, 4, 131074, 655360, 4, 131075, 655360, 4, 65543, 655360, 4, 65544, 655360, 4, 8, 655360, 4, -65528, 655360, 4, -65530, 655360, 4, 1, 655360, 4, -131069, 655360, 4, -65533, 655360, 4, -65531, 655360, 4, -131067, 655360, 4, -196603, 655360, 4, -196604, 655360, 4, -196605, 655360, 4, 2, 655360, 4, 3, 655360, 4, -65529, 655360, 4, 131073, 655360, 4, 262148, 655360, 4, 262149, 655360, 4, 262150, 655360, 4, 196614, 655360, 4, 131078, 655360, 4, 65542, 655360, 4, 131076, 655360, 4, 196612, 655360, 4)
 
 [node name="Player" parent="." instance=ExtResource("3_17evx")]
+unique_name_in_owner = true
 position = Vector2(80, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -467,6 +466,7 @@ z_index = 10
 position = Vector2(96, 0)
 
 [node name="Goals" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Goal" parent="Goals" instance=ExtResource("5_s8ka2")]
 position = Vector2(32, 16)

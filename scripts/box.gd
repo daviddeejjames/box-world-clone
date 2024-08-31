@@ -17,11 +17,13 @@ func isNextPositionValid(nextPosition):
 	ray.force_raycast_update()
 	return !ray.is_colliding()
 
-# FIXME: Can we avoid side effect here? 
-func move(direction):
+func can_move(direction):
 	var nextPosition = inputs[direction] * gridSize
 	if isNextPositionValid(nextPosition):
-		self.position += nextPosition 
 		return true
 	else:
 		return false
+
+func move(direction):
+	var nextPosition = inputs[direction] * gridSize
+	self.position += nextPosition

@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmishcftd7tk8"]
+[gd_scene load_steps=7 format=3 uid="uid://cmishcftd7tk8"]
 
-[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_4o3a8"]
 [ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_hu730"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_5mrg7"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_j8v0c"]
@@ -427,7 +426,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6e0yp")
 
 [node name="BoxWorldLevel8" type="Node2D"]
-script = ExtResource("1_4o3a8")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_45tgg")

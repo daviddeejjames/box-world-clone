@@ -22,5 +22,3 @@ func _on_fade_animation_finished(anim_name):
 func transition():
 	block.visible = true
 	fade.play(FADE_TO_COLOUR)
-
-

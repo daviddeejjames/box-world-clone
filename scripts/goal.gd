@@ -8,7 +8,6 @@ func _on_body_entered(body):
 		occupied = true
 
 func _on_body_exited(body):
-	
 	if body.is_in_group('box'):
 		print("goal exited")
 		occupied = false

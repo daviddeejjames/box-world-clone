@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctoakerwaj0m3"]
+[gd_scene load_steps=7 format=3 uid="uid://ctoakerwaj0m3"]
 
-[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_jlfhd"]
 [ext_resource type="Texture2D" uid="uid://covfwe33tilpk" path="res://sprites/monochrome_tilemap_packed.png" id="2_30ct4"]
 [ext_resource type="PackedScene" uid="uid://bxdc7tnkoo6jk" path="res://scenes/player.tscn" id="3_s6l6s"]
 [ext_resource type="PackedScene" uid="uid://c1wk5jwijv1tr" path="res://scenes/box.tscn" id="4_vhopp"]
@@ -427,7 +426,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6e0yp")
 
 [node name="BoxWorldLevel10" type="Node2D"]
-script = ExtResource("1_jlfhd")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(8, 8)

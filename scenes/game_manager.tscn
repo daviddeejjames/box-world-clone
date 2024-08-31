@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cijvc7njf2rtm"]
+[gd_scene load_steps=7 format=3 uid="uid://cijvc7njf2rtm"]
 
-[ext_resource type="Script" path="res://scripts/box_world.gd" id="1_dr252"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_dr252"]
+[ext_resource type="PackedScene" uid="uid://c317wd8fmloxb" path="res://scenes/levels/box_world_level1.tscn" id="2_c8ia6"]
+[ext_resource type="PackedScene" uid="uid://dnuowngtlfmj3" path="res://scenes/levels/box_world_level2.tscn" id="3_pr1au"]
+[ext_resource type="PackedScene" uid="uid://cm2hbcflerh50" path="res://scenes/levels/box_world_level3.tscn" id="4_x18wn"]
 [ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="11_34u5o"]
 
 [sub_resource type="Shortcut" id="Shortcut_qjsep"]
 events = [null]
 
-[node name="BoxWorld" type="Node2D"]
+[node name="GameManager" type="Node2D"]
 script = ExtResource("1_dr252")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+level_list = Array[PackedScene]([ExtResource("2_c8ia6"), ExtResource("3_pr1au"), ExtResource("4_x18wn")])
 
 [node name="Buttons" type="CanvasLayer" parent="."]
 

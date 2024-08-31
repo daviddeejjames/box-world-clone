@@ -20,7 +20,6 @@ func _input(event):
 
 # Does the object in the next position have collision?
 func isNextPositionValid(nextPosition):
-	
 	ray.target_position = nextPosition
 	ray.force_raycast_update()
 	return !ray.is_colliding()
@@ -32,7 +31,8 @@ func move(direction):
 	else: 
 		var collider = ray.get_collider()
 		if collider.is_in_group('box'):
-			if collider.move(direction):
+			if collider.can_move(direction):
+				collider.move(direction)
 				var undoDict = { 
 					"PlayerPos" = self.position,
 					"BoxPos" = (self.position + nextPosition),
