@@ -2,8 +2,8 @@ extends Node2D
 
 # Gameplay variables
 @export var level_list: Array[PackedScene]
-@onready var completeScreen := $UI/CompleteContainer
-@onready var _total_level_count = 0
+@onready var _completeScreen := $UI/CompleteContainer
+@onready var _total_level_count = level_list.size()
 var _level_counter: int = 0
 var _game_end := false
 var _timer: Timer = null
@@ -32,7 +32,7 @@ func _process(_delta):
 			print("YOU WON!")
 			setup_win_timer()
 			_timer.start()
-			completeScreen.transition()
+			_completeScreen.transition()
 			_game_end = true
 
 func setup_win_timer():
@@ -53,7 +53,6 @@ func _on_undo_button_pressed():
 	
 	if player.lastPlayerPos.size() > 0:
 		var undoDict = player.lastPlayerPos.pop_back()
-		print(undoDict) # prints state we are reverting to
 		var prevBoxPos = undoDict["BoxPos"]
 		var prevBoxIndex = undoDict["BoxIndex"]
 		player.position = undoDict["PlayerPos"]
@@ -62,12 +61,14 @@ func _on_undo_button_pressed():
 func _on_timer_timeout():
 	SceneTransition.transition()
 	await SceneTransition.on_transistion_finished
-	completeScreen.reset()
+	_completeScreen.reset()
 	_timer.queue_free()
 	_level_counter = _level_counter + 1
-	print(_level_counter)
+	
+	# If we have beaten all levels move to win screen!
 	if _level_counter >= _total_level_count:
 		get_tree().change_scene_to_file("res://scenes/menus/you_win.tscn")
 	else:
+		# Otherwise next level!
 		LevelManager.load_next_level(level_list[_level_counter])
 		_game_end = false
