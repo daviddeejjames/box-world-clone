@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpr8j77ye3clp"]
+[gd_scene load_steps=10 format=3 uid="uid://cpr8j77ye3clp"]
 
+[ext_resource type="Script" path="res://scripts/unplayer.gd" id="1_erstj"]
 [ext_resource type="Texture2D" uid="uid://bom882rb1m23q" path="res://sprites/pushig.png" id="2_82ae1"]
 [ext_resource type="Texture2D" uid="uid://do4maxoc33jpd" path="res://sprites/monochrome_tilemap_transparent_packed.png" id="2_o61tq"]
 
@@ -49,13 +50,12 @@ size = Vector2(16, 16)
 
 [node name="Unplayer" type="CharacterBody2D"]
 z_index = 50
+script = ExtResource("1_erstj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 6)
 sprite_frames = SubResource("SpriteFrames_wbgfi")
-animation = &"pushing"
 autoplay = "pushing"
-frame_progress = 0.147384
 offset = Vector2(2.08165e-12, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

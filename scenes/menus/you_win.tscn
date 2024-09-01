@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://bncqrgukxbbww"]
+
+[ext_resource type="Script" path="res://scripts/you_win.gd" id="1_d7m3y"]
+[ext_resource type="PackedScene" uid="uid://cpr8j77ye3clp" path="res://scenes/unplayer.tscn" id="3_hgaut"]
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="4_oem8b"]
+[ext_resource type="Texture2D" uid="uid://bjp7g4untvp5x" path="res://textures/pattern_14.png" id="5_f1i4k"]
+
+[sub_resource type="Animation" id="Animation_kmq0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Unplayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(523, 283)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Unplayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_default_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gumol"]
+resource_name = "you_win"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lydde"]
+_data = {
+"RESET": SubResource("Animation_kmq0l"),
+"you_win": SubResource("Animation_gumol")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2g7t"]
+shader = ExtResource("4_oem8b")
+shader_parameter/scroll_speed = 0.03
+shader_parameter/angle_degrees = 33.0
+shader_parameter/repeat_x = 10.0
+shader_parameter/repeat_y = 10.0
+shader_parameter/tint = Color(1, 1, 1, 0.239216)
+
+[node name="YouWin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7m3y")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 100
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 10
+
+[node name="Back to Main Menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Back To 
+Main Menu
+"
+flat = true
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Title" type="Sprite2D" parent="Background"]
+z_index = 200
+position = Vector2(576, 205)
+scale = Vector2(0.343034, 0.356884)
+
+[node name="Unplayer" parent="Background" instance=ExtResource("3_hgaut")]
+position = Vector2(523, 283)
+scale = Vector2(7, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lydde")
+}
+autoplay = "RESET"
+
+[node name="ParalaxBG" type="TextureRect" parent="Background"]
+show_behind_parent = true
+z_index = 10
+material = SubResource("ShaderMaterial_c2g7t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_f1i4k")
+stretch_mode = 6
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]

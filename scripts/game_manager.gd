@@ -3,11 +3,13 @@ extends Node2D
 # Gameplay variables
 @export var level_list: Array[PackedScene]
 @onready var completeScreen := $UI/CompleteContainer
+@onready var _total_level_count = 0
 var _level_counter: int = 0
 var _game_end := false
 var _timer: Timer = null
 
 func _ready():
+	print(_total_level_count)
 	LevelManager.set_main_scene(self)
 	LevelManager.load_next_level(level_list[_level_counter])
 
@@ -63,5 +65,9 @@ func _on_timer_timeout():
 	completeScreen.reset()
 	_timer.queue_free()
 	_level_counter = _level_counter + 1
-	LevelManager.load_next_level(level_list[_level_counter])
-	_game_end = false
+	print(_level_counter)
+	if _level_counter >= _total_level_count:
+		get_tree().change_scene_to_file("res://scenes/menus/you_win.tscn")
+	else:
+		LevelManager.load_next_level(level_list[_level_counter])
+		_game_end = false
