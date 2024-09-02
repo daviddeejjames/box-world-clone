@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqlmsvgaaiut5"
-path="res://.godot/imported/pushing.png-654d3e95a1f48ab50d738db10e7f9a36.ctex"
+uid="uid://cs8ickgp8tcck"
+path="res://.godot/imported/player_pushing.png-f56b163fb22ca3c8c9dd8918aae8ce84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pushing.png"
-dest_files=["res://.godot/imported/pushing.png-654d3e95a1f48ab50d738db10e7f9a36.ctex"]
+source_file="res://sprites/player_pushing.png"
+dest_files=["res://.godot/imported/player_pushing.png-f56b163fb22ca3c8c9dd8918aae8ce84.ctex"]
 
 [params]
 
