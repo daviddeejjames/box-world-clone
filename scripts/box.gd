@@ -5,10 +5,10 @@ const gridSize = 16
 @onready var ray = $RayCast2D
 
 var inputs = {
-	'ui_up': Vector2.UP,
-	'ui_down': Vector2.DOWN,
-	'ui_left': Vector2.LEFT,
-	'ui_right': Vector2.RIGHT
+	'player_up': Vector2.UP,
+	'player_down': Vector2.DOWN,
+	'player_left': Vector2.LEFT,
+	'player_right': Vector2.RIGHT
 }
 
 # Does the object in the next position have collision?	

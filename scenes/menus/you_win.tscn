@@ -13,7 +13,7 @@ font_size = 200
 shadow_size = 0
 
 [sub_resource type="Curve" id="Curve_rnotp"]
-_data = [Vector2(0, 0.428225), 0.0, 0.0, 0, 0, Vector2(1, 0.0248246), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_kmq0l"]
@@ -125,8 +125,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 200.0
-scale_amount_min = 30.0
-scale_amount_max = 40.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_rnotp")
 
 [node name="FireworkParticle2" type="CPUParticles2D" parent="Background"]
@@ -142,8 +142,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 200.0
-scale_amount_min = 30.0
-scale_amount_max = 40.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_rnotp")
 
 [node name="Unplayer" parent="Background" instance=ExtResource("3_hgaut")]

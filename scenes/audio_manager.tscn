@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bimc0qb6ucwal"]
+
+[ext_resource type="AudioStream" uid="uid://it5y2bhbtgrw" path="res://assets/PusholoTheme.wav" id="1_bv7cx"]
+[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="2_ywscm"]
+
+[node name="AudioManager" type="AudioStreamPlayer"]
+stream = ExtResource("1_bv7cx")
+volume_db = -1.552
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_ywscm")

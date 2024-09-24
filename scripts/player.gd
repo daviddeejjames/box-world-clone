@@ -6,14 +6,15 @@ const gridSize = 16
 var lastPlayerPos = []
 
 var inputs = {
-	'ui_up': Vector2.UP,
-	'ui_down': Vector2.DOWN,
-	'ui_left': Vector2.LEFT,
-	'ui_right': Vector2.RIGHT
+	'player_up': Vector2.UP,
+	'player_down': Vector2.DOWN,
+	'player_left': Vector2.LEFT,
+	'player_right': Vector2.RIGHT
 }
 
 # Read user input
 func _input(event) -> void:
+	# TODO prevent diagonal movement
 	for direction in inputs.keys():
 		if Input.is_action_pressed(direction):
 			_animate_direction(direction)
@@ -47,13 +48,13 @@ func _animate_direction(direction: String) -> void:
 	var sprite = $AnimatedSprite2D
 	
 	match direction:
-		'ui_up':
+		'player_up':
 			sprite.set_animation('backwards')
-		'ui_down':
+		'player_down':
 			sprite.set_animation('default')
-		'ui_left':
+		'player_left':
 			sprite.flip_h = true
 			sprite.set_animation('pushing')
-		'ui_right':
+		'player_right':
 			sprite.flip_h = false
 			sprite.set_animation('pushing')

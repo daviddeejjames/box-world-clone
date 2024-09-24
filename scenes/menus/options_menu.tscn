@@ -39,28 +39,35 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+auto_translate_mode = 2
 clip_contents = true
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 4.0
-auto_translate = false
 theme_override_constants/separation = 20
 
-[node name="Music" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_e0n63")
-theme_override_font_sizes/font_size = 40
-button_pressed = true
 text = "Music"
 
-[node name="SFX" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+[node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Music"
+theme = ExtResource("2_e0n63")
+min_value = -30.0
+max_value = 0.0
+
+[node name="SFXlabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_e0n63")
-theme_override_font_sizes/font_size = 40
-button_pressed = true
-text = "SFX"
+min_value = -30.0
+max_value = 0.0
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,10 +87,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.000324143
 mouse_filter = 2
 texture = ExtResource("3_evl5l")
 stretch_mode = 6
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Music" to="." method="_on_music_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SFX" to="." method="_on_sfx_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
