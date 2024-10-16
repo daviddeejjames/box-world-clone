@@ -17,6 +17,7 @@
 events = [null]
 
 [node name="GameManager" type="Node2D"]
+z_as_relative = false
 script = ExtResource("1_dr252")
 level_list = Array[PackedScene]([ExtResource("2_c8ia6"), ExtResource("3_pr1au"), ExtResource("4_x18wn"), ExtResource("5_uonim"), ExtResource("6_jumw3"), ExtResource("7_6kumm"), ExtResource("8_fxi5j"), ExtResource("9_rr16e"), ExtResource("10_unrj8"), ExtResource("11_1aa3x")])
 

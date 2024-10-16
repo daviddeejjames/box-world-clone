@@ -16,7 +16,7 @@ var inputs = {
 func _input(event) -> void:
 	# TODO prevent diagonal movement
 	for direction in inputs.keys():
-		if Input.is_action_pressed(direction):
+		if Input.is_action_just_pressed(direction):
 			_animate_direction(direction)
 			move(direction)
 

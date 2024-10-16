@@ -9,19 +9,22 @@ var _game_end := false
 var _win_timer: Timer = null
 var speed_run_timer: Timer = null
 
-func _ready():
+
+func _ready() -> void:
 	print(_total_level_count)
 	LevelManager.set_main_scene(self)
 	LevelManager.load_next_level(level_list[_level_counter])
 
-func _input(event):
+func _input(event) -> void:
 	if !_game_end:
 		if Input.is_action_pressed('ui_undo'):
 			_on_undo_button_pressed()
 		elif Input.is_action_pressed('reset_level'):
 			_on_reset_button_pressed()
+		elif Input.is_action_pressed('ui_cancel') and not get_tree().paused:
+			_open_pause_menu()
 
-func _process(_delta):
+func _process(_delta) -> void:
 	var goals = LevelManager.loaded_level.get_node('Goals')
 	if _game_end == false && goals: 
 		var goal_count = goals.get_child_count()
@@ -36,7 +39,7 @@ func _process(_delta):
 			_completeScreen.transition()
 			_game_end = true
 
-func setup_win_timer():
+func setup_win_timer() -> void:
 	_win_timer = Timer.new()
 	_win_timer.wait_time = 1.8 # 1 second
 	_win_timer.one_shot = true # don't loop, run once
@@ -44,11 +47,11 @@ func setup_win_timer():
 	_win_timer.timeout.connect(_on_timer_timeout)
 	add_child(_win_timer)
 
-func _on_reset_button_pressed():
-	# Hack
+func _on_reset_button_pressed() -> void:
+	# Hack - just reload current level
 	LevelManager.load_next_level(level_list[_level_counter])
 
-func _on_undo_button_pressed():
+func _on_undo_button_pressed() -> void:
 	var player = LevelManager.loaded_level.get_node('Player')
 	var boxes = LevelManager.loaded_level.get_node('Boxes')
 	
@@ -59,7 +62,7 @@ func _on_undo_button_pressed():
 		player.position = undoDict["PlayerPos"]
 		boxes.get_child(prevBoxIndex).position = prevBoxPos
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	SceneTransition.transition()
 	await SceneTransition.on_transistion_finished
 	_completeScreen.reset()
@@ -73,3 +76,13 @@ func _on_timer_timeout():
 		# Otherwise next level!
 		LevelManager.load_next_level(level_list[_level_counter])
 		_game_end = false
+		
+var pause_menu_scene: PackedScene = preload("res://scenes/menus/pause.tscn")
+var pause_menu = null
+func _open_pause_menu() -> void:
+	if not pause_menu:
+		pause_menu = pause_menu_scene.instantiate()
+		get_tree().root.add_child(pause_menu)
+	
+	pause_menu.toggle_pause()
+	

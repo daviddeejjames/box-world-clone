@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmnnlyqjh65o"]
+[gd_scene load_steps=5 format=3 uid="uid://cmnnlyqjh65o"]
 
 [ext_resource type="Script" path="res://scripts/goal.gd" id="1_5778c"]
 [ext_resource type="Texture2D" uid="uid://bl5l7jghj23e5" path="res://sprites/goal.png" id="1_tx7y3"]
+[ext_resource type="AudioStream" uid="uid://c6sdq3h83d80h" path="res://assets/laserSmall_000.ogg" id="3_6agrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3ns"]
 size = Vector2(14, 14)
@@ -17,6 +18,10 @@ shape = SubResource("RectangleShape2D_lh3ns")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("1_tx7y3")
+
+[node name="GoalSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6agrh")
+volume_db = -8.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
