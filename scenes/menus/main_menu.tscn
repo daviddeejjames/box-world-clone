@@ -126,6 +126,7 @@ theme_override_constants/separation = 10
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 45
 text = "Play
 "
@@ -133,6 +134,7 @@ flat = true
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 45
 text = "Options
 "
@@ -140,6 +142,7 @@ flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 45
 text = "Quit"
 flat = true

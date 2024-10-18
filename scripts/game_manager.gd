@@ -2,12 +2,13 @@ extends Node2D
 
 # Gameplay variables
 @export var level_list: Array[PackedScene]
-@onready var _completeScreen := $UI/CompleteContainer
+@onready var _completeScreen := $LevelComplete/CompleteContainer
 @onready var _total_level_count = level_list.size()
+@onready var _speed_run_label = $InLevelUI/MarginContainer/VBoxContainer/SpeedRunTimerLabel
 var _level_counter: int = 0
 var _game_end := false
 var _win_timer: Timer = null
-var speed_run_timer: Timer = null
+var _speed_run_time: float = 0.0
 
 
 func _ready() -> void:
@@ -24,7 +25,8 @@ func _input(event) -> void:
 		elif Input.is_action_pressed('ui_cancel') and not get_tree().paused:
 			_open_pause_menu()
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
+	_update_speed_run_label(delta)
 	var goals = LevelManager.loaded_level.get_node('Goals')
 	if _game_end == false && goals: 
 		var goal_count = goals.get_child_count()
@@ -86,3 +88,6 @@ func _open_pause_menu() -> void:
 	
 	pause_menu.toggle_pause()
 	
+func _update_speed_run_label(delta: float) -> void:
+	_speed_run_time += delta
+	_speed_run_label.text = "%02d.d" % _speed_run_time

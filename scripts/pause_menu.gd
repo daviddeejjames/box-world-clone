@@ -1,5 +1,7 @@
 extends Control
 
+func update_time(time: float) -> void:
+	pass
 
 func _input(event) -> void: 
 	if Input.is_action_just_pressed('ui_cancel') and get_tree().paused:

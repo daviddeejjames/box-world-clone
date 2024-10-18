@@ -129,3 +129,4 @@ libraries = {
 stream = ExtResource("3_wty77")
 volume_db = -5.0
 pitch_scale = 1.56
+bus = &"SFX"
