@@ -5,7 +5,6 @@ func _on_music_value_changed(value: int) -> void:
 
 func _on_sfx_value_changed(value: int) -> void:
 	AudioManager.update_sfx_volume(value)
-	AudioManager.play_sfx_for_slider()
 
 func _on_back_pressed() -> void:
 	# TODO: Come back to navigating here via Pause Menu

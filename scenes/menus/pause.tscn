@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y63dn")
+metadata/_edit_vertical_guides_ = [574.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -53,23 +54,35 @@ theme_override_font_sizes/font_size = 40
 button_mask = 3
 text = "Resume"
 
-[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Music"
 
-[node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+[node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 tooltip_text = "Music"
 theme = ExtResource("2_njgps")
 min_value = -30.0
 max_value = 0.0
 
-[node name="SFXlabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
+
+[node name="SFXlabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "SFX"
 
-[node name="SFX" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+[node name="SFX" type="HSlider" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 theme = ExtResource("2_njgps")
 min_value = -30.0
 max_value = 0.0
@@ -84,7 +97,6 @@ button_mask = 3
 text = "Quit to Main Menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -112,6 +124,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Resume" to="." method="_on_resume_pressed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer2/Music" to="." method="_on_music_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/HBoxContainer3/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/HBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

@@ -18,7 +18,6 @@ func _on_music_value_changed(value):
 
 func _on_sfx_value_changed(value):
 	AudioManager.update_sfx_volume(value)
-	AudioManager.play_sfx_for_slider()
 
 func _on_quit_pressed():
 	resume_game()
