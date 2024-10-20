@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8bee4w1vd5ck"]
+[gd_scene load_steps=6 format=3 uid="uid://b8bee4w1vd5ck"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_6ouec"]
 [ext_resource type="Theme" uid="uid://cyt67yifc08fx" path="res://pusholo_theme.tres" id="2_e0n63"]
 [ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_xpbft"]
 [ext_resource type="Texture2D" uid="uid://bjp7g4untvp5x" path="res://textures/pattern_14.png" id="3_evl5l"]
-[ext_resource type="AudioStream" uid="uid://c6sdq3h83d80h" path="res://assets/laserSmall_000.ogg" id="5_a6bok"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n63y6"]
 shader = ExtResource("2_xpbft")
@@ -93,11 +92,6 @@ rotation = 0.000324143
 mouse_filter = 2
 texture = ExtResource("3_evl5l")
 stretch_mode = 6
-
-[node name="GoalSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_a6bok")
-volume_db = -8.0
-bus = &"SFX"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX" to="." method="_on_sfx_value_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cijvc7njf2rtm"]
+[gd_scene load_steps=15 format=3 uid="uid://cijvc7njf2rtm"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_dr252"]
 [ext_resource type="PackedScene" uid="uid://c317wd8fmloxb" path="res://scenes/levels/box_world_level1.tscn" id="2_c8ia6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dig3i3s01i64j" path="res://scenes/levels/box_world_level9.tscn" id="10_unrj8"]
 [ext_resource type="PackedScene" uid="uid://ctoakerwaj0m3" path="res://scenes/levels/box_world_level10.tscn" id="11_1aa3x"]
 [ext_resource type="PackedScene" uid="uid://cdmd6op8da4kl" path="res://scenes/in_level_ui.tscn" id="11_34u5o"]
+[ext_resource type="PackedScene" uid="uid://brrpdob8tpwjq" path="res://scenes/menus/pause.tscn" id="12_tnl5h"]
 
 [sub_resource type="Shortcut" id="Shortcut_qjsep"]
 events = [null]
@@ -64,6 +65,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.643137)
 text = "000.00"
 
 [node name="LevelComplete" parent="." instance=ExtResource("11_34u5o")]
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="Pause" parent="PauseMenu" instance=ExtResource("12_tnl5h")]
+process_mode = 2
+visible = false
 
 [connection signal="pressed" from="InLevelUI/MarginContainer/VBoxContainer/Undo Button" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="InLevelUI/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]

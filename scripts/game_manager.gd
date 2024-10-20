@@ -22,13 +22,14 @@ func _input(event) -> void:
 			_on_undo_button_pressed()
 		elif Input.is_action_pressed('reset_level'):
 			_on_reset_button_pressed()
-		elif Input.is_action_pressed('ui_cancel') and not get_tree().paused:
-			_open_pause_menu()
-
+	
+	if Input.is_action_just_pressed('ui_cancel'):
+		$PauseMenu/Pause.pause_game()
+	
 func _process(delta) -> void:
-	_update_speed_run_label(delta)
 	var goals = LevelManager.loaded_level.get_node('Goals')
 	if _game_end == false && goals: 
+		_update_speed_run_label(delta)
 		var goal_count = goals.get_child_count()
 		for g in goals.get_children():
 			if g.occupied:
@@ -78,16 +79,7 @@ func _on_timer_timeout() -> void:
 		# Otherwise next level!
 		LevelManager.load_next_level(level_list[_level_counter])
 		_game_end = false
-		
-var pause_menu_scene: PackedScene = preload("res://scenes/menus/pause.tscn")
-var pause_menu = null
-func _open_pause_menu() -> void:
-	if not pause_menu:
-		pause_menu = pause_menu_scene.instantiate()
-		get_tree().root.add_child(pause_menu)
-	
-	pause_menu.toggle_pause()
-	
+
 func _update_speed_run_label(delta: float) -> void:
 	_speed_run_time += delta
-	_speed_run_label.text = "%02d.d" % _speed_run_time
+	_speed_run_label.text = "%02d" % _speed_run_time

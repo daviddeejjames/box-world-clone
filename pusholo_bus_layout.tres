@@ -2,7 +2,9 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_nw76q"]
 resource_name = "LowPassFilter"
-cutoff_hz = 1700.0
+cutoff_hz = 1500.0
+resonance = 0.6
+db = 3
 
 [resource]
 bus/1/name = &"Music"
@@ -17,5 +19,5 @@ bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = -1.81699
 bus/2/send = &"Master"

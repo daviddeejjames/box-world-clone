@@ -22,6 +22,7 @@ texture = ExtResource("1_tx7y3")
 [node name="GoalSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6agrh")
 volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

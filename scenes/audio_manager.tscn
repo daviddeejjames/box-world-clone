@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bimc0qb6ucwal"]
+[gd_scene load_steps=4 format=3 uid="uid://bimc0qb6ucwal"]
 
 [ext_resource type="AudioStream" uid="uid://it5y2bhbtgrw" path="res://assets/PusholoTheme.wav" id="1_bv7cx"]
 [ext_resource type="Script" path="res://scripts/audio_manager.gd" id="2_ywscm"]
+[ext_resource type="AudioStream" uid="uid://c6sdq3h83d80h" path="res://assets/laserSmall_000.ogg" id="3_oxwkp"]
 
 [node name="AudioManager" type="AudioStreamPlayer"]
 process_mode = 3
@@ -10,3 +11,8 @@ volume_db = -1.552
 autoplay = true
 bus = &"Music"
 script = ExtResource("2_ywscm")
+
+[node name="GoalSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oxwkp")
+volume_db = -8.0
+bus = &"SFX"

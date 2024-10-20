@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://cyt67yifc08fx" path="res://pusholo_theme.tres" id="2_njgps"]
 
 [node name="Pause" type="Control"]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y63dn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.921569)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 clip_contents = true
@@ -45,13 +53,26 @@ theme_override_font_sizes/font_size = 40
 button_mask = 3
 text = "Resume"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
-focus_mode = 0
+text = "Music"
+
+[node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "Music"
 theme = ExtResource("2_njgps")
-theme_override_font_sizes/font_size = 40
-button_mask = 3
-text = "Options"
+min_value = -30.0
+max_value = 0.0
+
+[node name="SFXlabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_njgps")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -63,6 +84,7 @@ button_mask = 3
 text = "Quit to Main Menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -89,4 +111,7 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Resume" to="." method="_on_resume_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
