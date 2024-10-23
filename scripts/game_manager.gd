@@ -4,11 +4,11 @@ extends Node2D
 @export var level_list: Array[PackedScene]
 @onready var _completeScreen := $LevelComplete/CompleteContainer
 @onready var _total_level_count = level_list.size()
-@onready var _speed_run_label = $InLevelUI/MarginContainer/VBoxContainer/SpeedRunTimerLabel
+@onready var _speed_run_label = %SpeedRunTimerLabel
+var speed_run_time: float = 0.0
 var _level_counter: int = 0
 var _game_end := false
 var _win_timer: Timer = null
-var _speed_run_time: float = 0.0
 
 
 func _ready() -> void:
@@ -74,6 +74,8 @@ func _on_timer_timeout() -> void:
 	
 	# If we have beaten all levels move to win screen!
 	if _level_counter >= _total_level_count:
+		# TODO: Send over speed run time string
+		var win_time = time_to_string(speed_run_time)
 		get_tree().change_scene_to_file("res://scenes/menus/you_win.tscn")
 	else:
 		# Otherwise next level!
@@ -81,5 +83,12 @@ func _on_timer_timeout() -> void:
 		_game_end = false
 
 func _update_speed_run_label(delta: float) -> void:
-	_speed_run_time += delta
-	_speed_run_label.text = "%02d" % _speed_run_time
+	speed_run_time += delta
+	_speed_run_label.text = time_to_string(speed_run_time)
+	
+func time_to_string(time: float) -> String:
+	var sec = fmod(time, 60)
+	var min = time/60
+	var format_string = "%02d : %02d"
+	return format_string % [min, sec]
+	

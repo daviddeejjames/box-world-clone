@@ -24,7 +24,7 @@ level_list = Array[PackedScene]([ExtResource("2_c8ia6"), ExtResource("3_pr1au"),
 
 [node name="InLevelUI" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="InLevelUI"]
+[node name="ButtonContainer" type="MarginContainer" parent="InLevelUI"]
 z_index = 10
 anchors_preset = 2
 anchor_top = 1.0
@@ -37,11 +37,11 @@ size_flags_vertical = 8
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InLevelUI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InLevelUI/ButtonContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Undo Button" type="Button" parent="InLevelUI/MarginContainer/VBoxContainer"]
+[node name="Undo Button" type="Button" parent="InLevelUI/ButtonContainer/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Ctrl+Z"
 focus_mode = 0
@@ -50,7 +50,7 @@ text = "Undo"
 flat = true
 alignment = 0
 
-[node name="Reset Button" type="Button" parent="InLevelUI/MarginContainer/VBoxContainer"]
+[node name="Reset Button" type="Button" parent="InLevelUI/ButtonContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 50
@@ -59,10 +59,30 @@ text = "Reset"
 flat = true
 alignment = 0
 
-[node name="SpeedRunTimerLabel" type="Label" parent="InLevelUI/MarginContainer/VBoxContainer"]
+[node name="TimeContainer" type="MarginContainer" parent="InLevelUI"]
+z_index = 10
+layout_direction = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_bottom = 120.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InLevelUI/TimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SpeedRunTimerLabel" type="Label" parent="InLevelUI/TimeContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.643137)
-text = "000.00"
+text = "00 : 00"
 
 [node name="LevelComplete" parent="." instance=ExtResource("11_34u5o")]
 
@@ -72,5 +92,5 @@ text = "000.00"
 process_mode = 2
 visible = false
 
-[connection signal="pressed" from="InLevelUI/MarginContainer/VBoxContainer/Undo Button" to="." method="_on_undo_button_pressed"]
-[connection signal="pressed" from="InLevelUI/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="InLevelUI/ButtonContainer/VBoxContainer/Undo Button" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="InLevelUI/ButtonContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]
