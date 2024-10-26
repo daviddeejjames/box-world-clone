@@ -33,6 +33,10 @@ AudioManager="*res://scenes/audio_manager.tscn"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
