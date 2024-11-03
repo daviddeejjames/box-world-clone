@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://s8y5d0p6ql1d"]
+
+[ext_resource type="Script" path="res://scripts/speed_run_manager.gd" id="1_3lmi6"]
+
+[node name="SpeedRunManager" type="Node"]
+script = ExtResource("1_3lmi6")

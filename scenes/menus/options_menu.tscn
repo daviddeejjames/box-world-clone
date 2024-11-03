@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8bee4w1vd5ck"]
 
-[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_6ouec"]
+[ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_6ouec"]
 [ext_resource type="Theme" uid="uid://cyt67yifc08fx" path="res://pusholo_theme.tres" id="2_e0n63"]
 [ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_xpbft"]
 [ext_resource type="Texture2D" uid="uid://bjp7g4untvp5x" path="res://textures/pattern_14.png" id="3_evl5l"]

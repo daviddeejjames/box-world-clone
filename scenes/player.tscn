@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxdc7tnkoo6jk"]
+[gd_scene load_steps=11 format=3 uid="uid://bxdc7tnkoo6jk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hbn1i"]
-[ext_resource type="Texture2D" uid="uid://c28066rgoe7da" path="res://sprites/player_front_back.png" id="2_pl2oi"]
-[ext_resource type="Texture2D" uid="uid://bom882rb1m23q" path="res://sprites/pushig.png" id="3_ub3vh"]
+[ext_resource type="Texture2D" uid="uid://c28066rgoe7da" path="res://sprites/player.png" id="2_pl2oi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8n4l"]
 atlas = ExtResource("2_pl2oi")
@@ -20,13 +19,13 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("2_pl2oi")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbn17"]
-atlas = ExtResource("3_ub3vh")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm7xe"]
+atlas = ExtResource("2_pl2oi")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wktjf"]
-atlas = ExtResource("3_ub3vh")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40o5"]
+atlas = ExtResource("2_pl2oi")
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbgfi"]
 animations = [{
@@ -54,10 +53,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dbn17")
+"texture": SubResource("AtlasTexture_xm7xe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wktjf")
+"texture": SubResource("AtlasTexture_t40o5")
 }],
 "loop": true,
 "name": &"pushing",

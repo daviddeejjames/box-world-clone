@@ -23,6 +23,5 @@ func _on_quit_pressed() -> void:
 	resume_game()
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
-
 func _on_sfx_drag_ended(_value_changed) -> void:
 	AudioManager.play_sfx_for_slider()

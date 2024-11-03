@@ -5,14 +5,11 @@ extends Node2D
 @onready var _completeScreen := $LevelComplete/CompleteContainer
 @onready var _total_level_count = level_list.size()
 @onready var _speed_run_label = %SpeedRunTimerLabel
-var speed_run_time: float = 0.0
 var _level_counter: int = 0
 var _game_end := false
 var _win_timer: Timer = null
 
-
 func _ready() -> void:
-	print(_total_level_count)
 	LevelManager.set_main_scene(self)
 	LevelManager.load_next_level(level_list[_level_counter])
 
@@ -29,14 +26,14 @@ func _input(event) -> void:
 func _process(delta) -> void:
 	var goals = LevelManager.loaded_level.get_node('Goals')
 	if _game_end == false && goals: 
-		_update_speed_run_label(delta)
+		SpeedRunManager.update_speedrun_time(delta)
+		_speed_run_label.text = SpeedRunManager.get_speedrun_time_string()
 		var goal_count = goals.get_child_count()
 		for g in goals.get_children():
 			if g.occupied:
 				goal_count -= 1
 				
 		if goal_count == 0:
-			print("YOU WON!")
 			setup_win_timer()
 			_win_timer.start()
 			_completeScreen.transition()
@@ -74,21 +71,11 @@ func _on_timer_timeout() -> void:
 	
 	# If we have beaten all levels move to win screen!
 	if _level_counter >= _total_level_count:
-		# TODO: Send over speed run time string
-		var win_time = time_to_string(speed_run_time)
 		get_tree().change_scene_to_file("res://scenes/menus/you_win.tscn")
 	else:
 		# Otherwise next level!
 		LevelManager.load_next_level(level_list[_level_counter])
 		_game_end = false
 
-func _update_speed_run_label(delta: float) -> void:
-	speed_run_time += delta
-	_speed_run_label.text = time_to_string(speed_run_time)
-	
-func time_to_string(time: float) -> String:
-	var sec = fmod(time, 60)
-	var min = time/60
-	var format_string = "%02d : %02d"
-	return format_string % [min, sec]
+
 	

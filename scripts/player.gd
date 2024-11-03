@@ -14,11 +14,14 @@ var inputs = {
 
 # Read user input
 func _input(event) -> void:
-	# TODO prevent diagonal movement
+	var direction_pressed = null
 	for direction in inputs.keys():
 		if Input.is_action_just_pressed(direction):
-			_animate_direction(direction)
-			move(direction)
+			direction_pressed = direction
+			
+	if direction_pressed != null:
+		_animate_direction(direction_pressed)
+		move(direction_pressed)
 
 # Does the object in the next position have collision?
 func _is_next_position_valid(nextPosition: Vector2) -> bool:
